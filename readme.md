@@ -1,6 +1,6 @@
 # Planck Rev6
 
-User guide to flashing a Planck, or possibly any QMK supported keyboard.
+Flashing instructions
 
 ## Pre-requisites
 
@@ -16,15 +16,16 @@ QMK Firmware
 	cp -f /mnt/c/projects/qmk/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/mine
 	```
 1. Compile
-	- `qmk compile -kb _keyboard_ -km _keymap_`
+	- `cd _dir_ && qmk compile`
 	- Example:
   	```
-	qmk compile -kb planck/rev6 -km mine
+  	cd /home/wkuo/qmk_firmware/keyboards/planck/keymaps/mine
+	qmk compile
 	```
 1. Retrieve .bin
 	- Example:
 	```
-	cp -f qmk_firmware/.build/planck_rev6_mine.bin /mnt/c/projects/qmk
+	cp -f ~/qmk_firmware/.build/planck_rev6_mine.bin /mnt/c/projects/qmk
 	```
 
 ## Flash
@@ -36,15 +37,18 @@ QMK Firmware
 	- Connect kb
 1. Flash .bin file
 
-
 ## Errors
 
 Qmk toolbox saying it can't list HID devices?
 
-- Get Zadig
-- Enter DFU mode (space+b)
-- Select STM32 BOOTLOADER
-- Install libusbK
-- Open qmk toolbox
-- Re-enter DFU mode
-- Flash
+Prerequisites:
+
+- Zadig
+
+1. Enter DFU mode (space+b)
+1. Open Zadig
+1. Select STM32 BOOTLOADER
+1. Install libusbK/WinUSB
+1. Open qmk toolbox
+1. Re-enter DFU mode
+1. Flash

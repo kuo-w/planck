@@ -1,24 +1,5 @@
 #include QMK_KEYBOARD_H
 
-/* 
-
-Create keyboard profile:
-mkdir ~/qmk_firmware/keyboards/planck/keymaps/mine
-
-Move config into profile:
-move keymap.c into /mine
-
-Compile:
-qmk compile -kb planck/rev6 -km mine
-
-Copy .bin file somewhere to flash:
-cp ~/qmk_firmware/planck_rev6_mine.bin /mnt/c/qmk
-
-On edit, re-copy to profile and repeat compilation:
-cp /mnt/c/qmk/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/mine
-
-*/
-
 enum custom_keycodes
 {
     ARROW = SAFE_RANGE,
@@ -29,11 +10,6 @@ enum custom_keycodes
     REDO
 };
 
-/* 
-Custom macros
-
-Case statements follow: if case then press_action else release_action
-*/
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
     switch (keycode)
@@ -100,16 +76,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_NO, KC_NO, KC_LALT, KC_SPC, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_CAPS),
     [2] = LAYOUT_ortho_4x12(
         /* 
-        tab     !       @       #       $       ~       nil     7       8       9       nil     bksp
-        gui     %       ^       &       *       `       .>      4       5       6       +       nil
-        lsft    nil     nil     nil     nil     nil     ,<      1       2       3       -       del
+        tab     !       @       #       $       nil     nil     7       8       9       nil     bksp
+        gui     %       ^       &       *       nil     .>      4       5       6       +       nil
+        lsft    nil     nil     `       ~       rgb     ,<      1       2       3       -       del
         lctl    nil     nil     lalt    nil     mod     nil     0       =       nil     nil     nil
         */
         // r1
-        KC_TAB, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_TILD, KC_NO, KC_7, KC_8, KC_9, KC_NO, KC_BSPC,
+        KC_TAB, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_NO, KC_BSPC,
         // r2
-        KC_LGUI, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_GRV, KC_DOT, KC_4, KC_5, KC_6, KC_PPLS, KC_NO,
+        KC_LGUI, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_NO, KC_DOT, KC_4, KC_5, KC_6, KC_PPLS, KC_NO,
         // r3
-        KC_LSFT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_COMM, KC_1, KC_2, KC_3, KC_PMNS, KC_DEL,
+        KC_LSFT, KC_NO, KC_NO, KC_GRV, KC_TILD, RGB_TOG, KC_COMM, KC_1, KC_2, KC_3, KC_PMNS, KC_DEL,
         // r4
         KC_LCTL, KC_NO, KC_NO, KC_LALT, KC_NO, KC_TRNS, KC_NO, KC_0, KC_PEQL, KC_NO, KC_NO, KC_NO)};
