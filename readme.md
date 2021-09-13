@@ -28,6 +28,11 @@ QMK Firmware
 	cp -f ~/qmk_firmware/.build/planck_rev6_mine.bin /mnt/c/projects/qmk
 	```
 
+cp -f /mnt/c/projects/qmk/keymap.c ~/qmk_firmware/keyboards/planck/keymaps/mine &&
+cd /home/wkuo/qmk_firmware/keyboards/planck/keymaps/mine &&
+qmk compile &&
+cp -f ~/qmk_firmware/.build/planck_rev6_mine.bin /mnt/c/projects/qmk
+
 ## Flash
 
 1. Launch qmk_toolbox
